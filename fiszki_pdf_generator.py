@@ -34,7 +34,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 # --- Konfiguracja wyglądu ---
 PAGE_SIZE = A4  # (width, height) w punktach
 MARGIN_MM = 12
-GAP_MM = 6
+GAP_MM = 0
 COLUMNS = 3
 ROWS = 3
 CARDS_PER_PAGE = COLUMNS * ROWS
@@ -45,7 +45,7 @@ GAP = GAP_MM * mm
 
 # Font sizes
 WORD_FONT_SIZE = 20
-TRANSL_FONT_SIZE = 12
+TRANSL_FONT_SIZE = 20
 
 # Image area ratio inside card (fraction of card height reserved for image)
 IMAGE_HEIGHT_RATIO = 0.52
@@ -155,49 +155,42 @@ def draw_card(c, x, y, w, h, item):
     inner_w = w - 2 * pad
     inner_h = h - 2 * pad
 
-    # Image area
-    img_area_h = inner_h * IMAGE_HEIGHT_RATIO
-    text_area_h = inner_h - img_area_h
+    word = item.get('TEKST', '')
+    transl = item.get('TŁUMACZENIE', '')
 
-    # Draw image (centered)
-    img_top = inner_y + inner_h - img_area_h
+    # TEKST na górze
+    c.setFont(FONT_BOLD_NAME, WORD_FONT_SIZE)
+    word_y = inner_y + inner_h - WORD_FONT_SIZE - 2  # górna część karty
+    c.drawCentredString(x + w / 2, word_y, word)
+
+    # Oblicz miejsce na obrazek
+    img_area_h = inner_h * IMAGE_HEIGHT_RATIO
     img_max_w = inner_w * IMAGE_MAX_WIDTH_RATIO
-    img_max_h = img_area_h - 4  # tiny gap
+    img_max_h = img_area_h - 4
 
     img_reader = None
     img_size = (0, 0)
     try:
         pil_img = fetch_image(item.get('LINK DO OBRAZKA'))
     except Exception:
-        pil_img = make_placeholder(item.get('TEKST') or '')
+        pil_img = make_placeholder(word)
 
     try:
         img_reader, img_size = pil_image_to_reportlab(pil_img, img_max_w, img_max_h)
     except Exception:
-        pil_img = make_placeholder(item.get('TEKST') or '')
+        pil_img = make_placeholder(word)
         img_reader, img_size = pil_image_to_reportlab(pil_img, img_max_w, img_max_h)
 
-    # Compute image position
+    # Pozycja obrazka: środek karty
     iw, ih = img_size
     img_x = inner_x + (inner_w - iw) / 2
-    img_y = img_top + (img_max_h - ih) / 2
+    img_y = inner_y + (inner_h - img_area_h) / 2 + (img_area_h - ih) / 2
     c.drawImage(img_reader, img_x, img_y, width=iw, height=ih, preserveAspectRatio=True, mask='auto')
 
-    # Draw tekst (word) centered below image
-    word = item.get('TEKST', '')
-    transl = item.get('TŁUMACZENIE', '')
-
-    # Word
-    c.setFont(FONT_BOLD_NAME, WORD_FONT_SIZE)
-    text_y = img_top - 50
-    # center text in the remaining area
-    text_box_y = inner_y
-    # Draw word centered horizontally
-    c.drawCentredString(x + w / 2, text_y, word)
-
-    # Translation smaller and below word
+    # TŁUMACZENIE na dole
     c.setFont(FONT_NAME, TRANSL_FONT_SIZE)
-    c.drawCentredString(x + w / 2, text_y - (TRANSL_FONT_SIZE + 4), transl)
+    transl_y = inner_y + TRANSL_FONT_SIZE + 2  # dolna część karty
+    c.drawCentredString(x + w / 2, transl_y, transl)
 
 def generate_pdf(data_rows, out_path):
     page_w, page_h = PAGE_SIZE
