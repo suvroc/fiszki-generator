@@ -142,8 +142,11 @@ def pil_image_to_reportlab(img, max_width, max_height):
 
 
 def draw_card(c, x, y, w, h, item):
-    # Draw border
+    # Draw border (gray)
+    from reportlab.lib.colors import gray
+    c.setStrokeColor(gray)
     c.rect(x, y, w, h)
+    c.setStrokeColorRGB(0, 0, 0)  # reset to black for other elements if needed
 
     # Padding inside card
     pad = 6 * mm
