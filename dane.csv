@@ -1,21 +1,21 @@
-TEKST,TŁUMACZENIE,LINK DO OBRAZKA
-house,la casa,https://static.thenounproject.com/png/house-icon-8041868-512.png
-cat,el gato,https://static.thenounproject.com/png/cat-icon-7548257-512.png
-dog,el perro,https://static.thenounproject.com/png/dog-icon-6999950-512.png
-book,el libro,https://static.thenounproject.com/png/book-icon-7234991-512.png
-car,el carro,https://static.thenounproject.com/png/car-icon-7979293-512.png
-apple,la manzana,https://static.thenounproject.com/png/apple-icon-8028906-512.png
-sun,el sol,https://static.thenounproject.com/png/sun-icon-7988889-512.png
-moon,la luna,https://static.thenounproject.com/png/moon-icon-8038838-512.png
-tree,el arborl,https://static.thenounproject.com/png/tree-icon-8030080-512.png
-flower,kwiat,https://static.thenounproject.com/png/24015-200.png
-water,woda,https://static.thenounproject.com/png/777950-200.png
-fire,ogień,https://static.thenounproject.com/png/126296-200.png
-bird,ptak,https://static.thenounproject.com/png/121653-200.png
-fish,ryba,https://static.thenounproject.com/png/393890-200.png
-house,dom,https://static.thenounproject.com/png/4674847-200.png
-chair,krzesło,https://static.thenounproject.com/png/5367603-200.png
-table,stół,https://static.thenounproject.com/png/346172-200.png
-door,drzwi,https://static.thenounproject.com/png/71396-200.png
-window,okno,https://static.thenounproject.com/png/631831-200.png
-shoe,but,https://static.thenounproject.com/png/89352-200.png
+TEKST,TŁUMACZENIE,LINK DO OBRAZKA,ZDANIE_EN,ZDANIE_ES
+house,la casa,https://static.thenounproject.com/png/house-icon-8041868-512.png,This is my house.,Esta es mi casa.
+cat,el gato,https://static.thenounproject.com/png/cat-icon-7548257-512.png,The cat is sleeping.,El gato está durmiendo.
+dog,el perro,https://static.thenounproject.com/png/dog-icon-6999950-512.png,The dog is barking.,El perro está ladrando.
+book,el libro,https://static.thenounproject.com/png/book-icon-7234991-512.png,This book is interesting.,Este libro es interesante.
+car,el carro,https://static.thenounproject.com/png/car-icon-7979293-512.png,My car is red.,Mi carro es rojo.
+apple,la manzana,https://static.thenounproject.com/png/apple-icon-8028906-512.png,The apple is sweet.,La manzana es dulce.
+sun,el sol,https://static.thenounproject.com/png/sun-icon-7988889-512.png,The sun is shining.,El sol está brillando.
+moon,la luna,https://static.thenounproject.com/png/moon-icon-8038838-512.png,The moon is bright.,La luna es brillante.
+tree,el arborl,https://static.thenounproject.com/png/tree-icon-8030080-512.png,The tree is tall.,El árbol es alto.
+flower,kwiat,https://static.thenounproject.com/png/24015-200.png,The flower is beautiful.,La flor es hermosa.
+water,woda,https://static.thenounproject.com/png/777950-200.png,Water is important.,El agua es importante.
+fire,ogień,https://static.thenounproject.com/png/126296-200.png,Fire is hot.,El fuego es caliente.
+bird,ptak,https://static.thenounproject.com/png/121653-200.png,The bird is singing.,El pájaro está cantando.
+fish,ryba,https://static.thenounproject.com/png/393890-200.png,The fish is swimming.,El pez está nadando.
+house,dom,https://static.thenounproject.com/png/4674847-200.png,My house is big.,Mi casa es grande.
+chair,krzesło,https://static.thenounproject.com/png/5367603-200.png,The chair is comfortable.,La silla es cómoda.
+table,stół,https://static.thenounproject.com/png/346172-200.png,The table is round.,La mesa es redonda.
+door,drzwi,https://static.thenounproject.com/png/71396-200.png,The door is open.,La puerta está abierta.
+window,okno,https://static.thenounproject.com/png/631831-200.png,The window is clean.,La ventana está limpia.
+shoe,but,https://static.thenounproject.com/png/89352-200.png,The shoe is new.,El zapato es nuevo.

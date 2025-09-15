@@ -83,10 +83,14 @@ def read_csv(path):
             if tekst is None and tlum is None and link is None:
                 # skip empty rows
                 continue
+            zdanie_en = r.get('ZDANIE_EN') or r.get('ZDANIE en') or r.get('EN_SENTENCE') or ''
+            zdanie_es = r.get('ZDANIE_ES') or r.get('ZDANIE es') or r.get('ES_SENTENCE') or ''
             rows.append({
                 'TEKST': (tekst or '').strip(),
                 'TŁUMACZENIE': (tlum or '').strip(),
                 'LINK DO OBRAZKA': (link or '').strip(),
+                'ZDANIE_EN': zdanie_en.strip(),
+                'ZDANIE_ES': zdanie_es.strip(),
                 'row_index': i
             })
     return rows
@@ -157,11 +161,20 @@ def draw_card(c, x, y, w, h, item):
 
     word = item.get('TEKST', '')
     transl = item.get('TŁUMACZENIE', '')
+    zdanie_en = item.get('ZDANIE_EN', '')
+    zdanie_es = item.get('ZDANIE_ES', '')
 
     # TEKST na górze
     c.setFont(FONT_BOLD_NAME, WORD_FONT_SIZE)
     word_y = inner_y + inner_h - WORD_FONT_SIZE - 2  # górna część karty
     c.drawCentredString(x + w / 2, word_y, word)
+
+    # Angielskie zdanie pod TEKST
+    sentence_font_size = 10
+    c.setFont(FONT_NAME, sentence_font_size)
+    sentence_y_en = word_y - sentence_font_size - 10
+    if zdanie_en:
+        c.drawCentredString(x + w / 2, sentence_y_en, zdanie_en)
 
     # Oblicz miejsce na obrazek
     img_area_h = inner_h * IMAGE_HEIGHT_RATIO
@@ -191,6 +204,12 @@ def draw_card(c, x, y, w, h, item):
     c.setFont(FONT_NAME, TRANSL_FONT_SIZE)
     transl_y = inner_y + TRANSL_FONT_SIZE + 2  # dolna część karty
     c.drawCentredString(x + w / 2, transl_y, transl)
+
+    # Hiszpańskie zdanie pod TŁUMACZENIE
+    c.setFont(FONT_NAME, sentence_font_size)
+    sentence_y_es = transl_y + sentence_font_size + 10
+    if zdanie_es:
+        c.drawCentredString(x + w / 2, sentence_y_es, zdanie_es)
 
 def generate_pdf(data_rows, out_path):
     page_w, page_h = PAGE_SIZE
