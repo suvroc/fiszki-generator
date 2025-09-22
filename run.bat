@@ -1,0 +1,1 @@
+py .\fiszki_pdf_generator.py 'dane.csv' 'wynik.pdf'
